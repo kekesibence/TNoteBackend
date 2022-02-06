@@ -8,7 +8,7 @@
             <div class="row mt-5">
                 <div class="col-md-4 mx-auto">
                     <h1>Welcome to TNote</h1>
-                    <p>Current users: {{ $usercount }}</p>
+                    <p>Registered users: {{ $usercount }}</p>
                     <p>Notes created: {{ $notecount }}</p>
                 </div>
             </div>
