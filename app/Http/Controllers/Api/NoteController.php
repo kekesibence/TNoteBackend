@@ -83,4 +83,9 @@ class NoteController extends Controller
     {
         //
     }
+
+    public function getRelatedNotes(int $id) {
+        $notes = Note::get()->where('owner', $id);
+        return $notes;
+    }
 }

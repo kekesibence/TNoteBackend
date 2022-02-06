@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('users', UserController::class);
 Route::resource('notes', NoteController::class);
+Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
