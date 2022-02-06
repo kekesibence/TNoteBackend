@@ -2,7 +2,7 @@
 
 <p>Telepítés:</p>
 <ul> 
-<li>composer install</li>
-<li>npm install</li>
-<li>npm run dev</li>
+<li><span style="color: yellow">composer</span> install</li>
+<li><span style="color: yellow">npm</span> install</li>
+<li><span style="color: yellow">npm</span> run dev</li>
 </ul>
