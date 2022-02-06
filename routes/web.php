@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Note;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $users = User::all();
+    $notes = Note::all();
+    return view('welcome', ['usercount' => $users->count(), 'notecount' => $notes->count()]);
 });
