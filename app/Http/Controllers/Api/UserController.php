@@ -26,7 +26,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->fill($request->all());
+        $user->save();
+        return response()->json($user, 201);
     }
 
     /**
@@ -49,7 +52,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $toEdit = User::findOrFail($id);
+        $toEdit->fill($request->all());
+        $toEdit->save();
+        return response()->json($toEdit, 200);
     }
 
     /**
