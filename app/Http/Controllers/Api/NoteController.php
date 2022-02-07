@@ -81,7 +81,7 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        //
+        return $note->delete();
     }
 
     public function getRelatedNotes(int $id) {
