@@ -36,7 +36,10 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $note = new Note();
+        $note->fill($request->all());
+        $note->save();
+        return response()->json($note, 201);
     }
 
     /**
@@ -70,7 +73,9 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        $note->fill($request->all());
+        $note->save();
+        return response()->json($note, 200);
     }
 
     /**
