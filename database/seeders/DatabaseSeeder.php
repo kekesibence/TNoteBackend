@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Styles;
 use App\Models\User;
+use App\Models\Timetable;
+use App\Models\TTElements;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,5 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
+        Timetable::factory(10)->create();
+        TTElements::factory(30)->create();
+        Styles::factory(20)->create();
     }
 }
