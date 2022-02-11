@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NoteController;
-use App\Http\Controllers\TimetableController;
-use App\Http\Controllers\TTElementsController;
+use App\Http\Controllers\Api\TimetableController;
+use App\Http\Controllers\Api\TTElementsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
