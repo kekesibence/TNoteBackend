@@ -93,8 +93,6 @@ class TimetableController extends Controller
     {
         $timetable = Timetable::get()->where('userId', $id);
         
-        $ttelements = TTElements::get()->where('ttid', $timetable->id);
-
-        return response()->json($ttelements);
+        return $timetable;
     }
 }

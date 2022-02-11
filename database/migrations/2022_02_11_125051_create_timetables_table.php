@@ -16,6 +16,7 @@ class CreateTimetablesTable extends Migration
         Schema::create('timetables', function (Blueprint $table) {
             $table->id();
             $table->integer('userId');
+            $table->string('name');
             $table->timestamps();
         });
     }

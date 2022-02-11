@@ -17,6 +17,7 @@ class StylesFactory extends Factory
         return [
             'userId' => User::all()->random(),
             'description' => $this->faker->text(100),
+            'style' => ""
         ];
     }
 }
