@@ -35,7 +35,17 @@ class TTElementsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ttelements = new TTElements();
+        $ttelements->fill($request->only([
+            'ttid', 
+            'day', 
+            'title',
+            'description',
+            'start',
+            'end',
+            'repeating']));
+        $ttelements->save();
+        return response()->json($ttelements, 201);
     }
 
     /**
@@ -46,7 +56,7 @@ class TTElementsController extends Controller
      */
     public function show(TTElements $tTElements)
     {
-        //
+        return TTElements::findOrFail($tTElements);
     }
 
     /**
@@ -69,7 +79,16 @@ class TTElementsController extends Controller
      */
     public function update(Request $request, TTElements $tTElements)
     {
-        //
+        $tTElements->fill($request->only([
+            'ttid', 
+            'day', 
+            'title',
+            'description',
+            'start',
+            'end',
+            'repeating']));
+        $tTElements->save();
+        return response()->json($tTElements, 200);
     }
 
     /**
@@ -80,6 +99,6 @@ class TTElementsController extends Controller
      */
     public function destroy(TTElements $tTElements)
     {
-        //
+        return TTElements::destroy($tTElements->ttid);
     }
 }
