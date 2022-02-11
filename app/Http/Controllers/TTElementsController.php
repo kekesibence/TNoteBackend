@@ -101,4 +101,11 @@ class TTElementsController extends Controller
     {
         return TTElements::destroy($tTElements->ttid);
     }
+
+    public function getAllElements($tableId) 
+    {
+        $elements = TTElements::get()->where('ttid', $tableId);
+
+        return $elements;
+    }
 }
