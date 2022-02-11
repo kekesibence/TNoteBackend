@@ -26,6 +26,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'min:5',
+            'email' => 'unique:users,email',
+            'password' => ''
+        ]);
+
         $data = $request->only("name", "email", "password");
 
         $user = new User();
@@ -54,6 +60,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'min:5',
+            'email' => 'unique:users,email',
+            'password' => ''
+        ]);
+
         $toEdit = User::findOrFail($id);
         $toEdit->fill($request->only(['name', 'email', 'password']));
         $toEdit->save();
