@@ -26,8 +26,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->only("name", "email", "password");
+
         $user = new User();
-        $user->fill($request->all());
+        $user->fill($data);
         $user->save();
         return response()->json($user, 201);
     }

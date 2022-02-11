@@ -50,7 +50,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        return Note::findOrFail($note);
+        return Note::findOrFail($note->id);
     }
 
     /**
