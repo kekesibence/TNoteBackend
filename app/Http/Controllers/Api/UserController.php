@@ -55,7 +55,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $toEdit = User::findOrFail($id);
-        $toEdit->fill($request->all());
+        $toEdit->fill($request->only(['name', 'email', 'password']));
         $toEdit->save();
         return response()->json($toEdit, 200);
     }
