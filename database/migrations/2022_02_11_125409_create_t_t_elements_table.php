@@ -14,7 +14,7 @@ class CreateTTElementsTable extends Migration
     public function up()
     {
         Schema::create('t_t_elements', function (Blueprint $table) {
-            $table->int('ttid');
+            $table->integer('ttid');
             $table->string('day');
             $table->string('title');
             $table->string('description');
