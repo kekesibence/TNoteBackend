@@ -37,7 +37,7 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         $note = new Note();
-        $note->fill($request->all());
+        $note->fill($request->only(['content', 'owner', 'title']));
         $note->save();
         return response()->json($note, 201);
     }
