@@ -15,7 +15,8 @@ class TimetableFactory extends Factory
     public function definition()
     {
         return [
-            'userId' => User::all()->random()
+            'userId' => User::all()->random(),
+            'name' => $this->faker->words(3, true)
         ];
     }
 }

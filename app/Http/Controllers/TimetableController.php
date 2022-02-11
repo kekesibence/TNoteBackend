@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Timetable;
+use App\Models\TTElements;
 use Illuminate\Http\Request;
 
 class TimetableController extends Controller
@@ -35,7 +36,10 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $timetable = new Timetable();
+        $timetable->fill($request->only(['id', 'userId']));
+        $timetable->save();
+        return response()->json($timetable, 201);
     }
 
     /**
@@ -46,7 +50,7 @@ class TimetableController extends Controller
      */
     public function show(Timetable $timetable)
     {
-        //
+        return Timetable::findOrFail($timetable->id);
     }
 
     /**
@@ -69,7 +73,9 @@ class TimetableController extends Controller
      */
     public function update(Request $request, Timetable $timetable)
     {
-        //
+        $timetable->fill($request->only(['userId']));
+        $timetable->save();
+        return response()->json($timetable, 200);
     }
 
     /**
@@ -80,6 +86,13 @@ class TimetableController extends Controller
      */
     public function destroy(Timetable $timetable)
     {
-        //
+        return Timetable::destroy($timetable->id);
+    }
+
+    public function getTimetable(int $id)
+    {
+        $timetable = Timetable::get()->where('userId', $id);
+        
+        return $timetable;
     }
 }
