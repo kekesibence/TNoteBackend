@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NoteRequest;
 
 class NoteController extends Controller
 {
@@ -34,8 +35,10 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NoteRequest $request)
     {
+        $request->validate($request->rules());
+
         $note = new Note();
         $note->fill($request->only(['content', 'owner', 'title']));
         $note->save();
@@ -71,8 +74,10 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
+    public function update(NoteRequest $request, Note $note)
     {
+        $request->validate($request->rules());
+
         $note->fill($request->only(['title', 'content', 'owner']));
         $note->save();
         return response()->json($note, 200);
