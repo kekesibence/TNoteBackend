@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Note;
+use App\Models\Styles;
+use App\Models\Timetable;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $users = User::all();
     $notes = Note::all();
-    return view('welcome', ['usercount' => $users->count(), 'notecount' => $notes->count()]);
+    $styles = Styles::all();
+    $timetables = Timetable::all();
+    return view('welcome', [
+        'usercount' => $users->count(), 
+        'notecount' => $notes->count(),
+        'stylecount' => $styles->count(),
+        'timetablecount' => $timetables->count()
+    ]);
 });
