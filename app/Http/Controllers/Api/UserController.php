@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -24,13 +25,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'min:5',
-            'email' => 'unique:users,email',
-            'password' => ''
-        ]);
+        $validated = $request->validate($request->rules());
 
         $data = $request->only("name", "email", "password");
 
@@ -58,13 +55,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        $validated = $request->validate([
-            'name' => 'min:5',
-            'email' => 'unique:users,email',
-            'password' => ''
-        ]);
+        $validated = $request->validate($request->rules());
 
         $toEdit = User::findOrFail($id);
         $toEdit->fill($request->only(['name', 'email', 'password']));
