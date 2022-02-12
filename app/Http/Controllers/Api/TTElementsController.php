@@ -99,7 +99,7 @@ class TTElementsController extends Controller
      */
     public function destroy(TTElements $tTElements)
     {
-        return TTElements::destroy($tTElements->ttid);
+        return $tTElements->delete();
     }
 
     public function getAllElements($tableId) 
