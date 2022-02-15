@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StyleRequest;
 use App\Models\Styles;
 use Illuminate\Http\Request;
 
-class StylesController extends Controller
+class StyleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,7 +43,7 @@ class StylesController extends Controller
         $style->fill($request->only(['userId', 'description', 'style']));
         $style->save();
 
-        return response()->json($style, 200);
+        return response()->json($style, 201);
     }
 
     /**
@@ -50,10 +51,11 @@ class StylesController extends Controller
      *
      * @param  \App\Models\Styles  $styles
      * @return \Illuminate\Http\Response
+     * int formaban erkezik az id mert ha Styles volt a tipusa nem ment
      */
-    public function show(Styles $styles)
+    public function show($styles)
     {
-        //
+        return response()->json(Styles::findOrFail($styles), 200);
     }
 
     /**
