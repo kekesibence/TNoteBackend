@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\NoteController;
 use App\Http\Controllers\Api\TimetableController;
 use App\Http\Controllers\Api\TTElementsController;
 use App\Http\Controllers\Api\StyleController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
