@@ -22,12 +22,12 @@ Route::resource('users', UserController::class);
 
 Route::resource('notes', NoteController::class);
 
-Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
+Route::resource('styles', StyleController::class);
 
 Route::resource('timetables', TimetableController::class);
+
+Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
 
 Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
 
 Route::get('/users/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
-
-Route::resource('styles', StyleController::class);

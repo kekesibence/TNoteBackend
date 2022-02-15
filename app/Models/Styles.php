@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Styles extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'userId',
+        'description',
+        'style' 
+    ];
 }

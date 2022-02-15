@@ -76,9 +76,15 @@ class StyleController extends Controller
      * @param  \App\Models\Styles  $styles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Styles $styles)
+    public function update(StyleRequest $request, $stylesId)
     {
-        //
+        $request->validate($request->rules());
+
+        $styles = Styles::findOrFail($stylesId);
+        $styles->fill($request->only(['userId', 'description', 'style']));
+        $styles->save();
+
+        return response()->json($styles, 200);
     }
 
     /**
@@ -87,8 +93,8 @@ class StyleController extends Controller
      * @param  \App\Models\Styles  $styles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Styles $styles)
+    public function destroy($styles)
     {
-        //
+        return Styles::findOrFail($styles)->delete();
     }
 }
