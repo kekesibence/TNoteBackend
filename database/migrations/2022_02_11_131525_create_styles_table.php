@@ -14,6 +14,7 @@ class CreateStylesTable extends Migration
     public function up()
     {
         Schema::create('styles', function (Blueprint $table) {
+            $table->id();
             $table->integer('userId');
             $table->string('description');
             $table->string('style');

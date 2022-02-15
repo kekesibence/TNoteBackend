@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Styles;
 use Illuminate\Http\Request;
+use NunoMaduro\Collision\Adapters\Phpunit\Style;
 
 class StylesController extends Controller
 {
@@ -14,7 +15,7 @@ class StylesController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Styles::all(), 200);
     }
 
     /**
