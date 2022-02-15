@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StyleRequest;
 use App\Models\Styles;
 use Illuminate\Http\Request;
-use NunoMaduro\Collision\Adapters\Phpunit\Style;
 
 class StylesController extends Controller
 {
@@ -34,9 +34,15 @@ class StylesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StyleRequest $request)
     {
-        //
+        $request->validate($request->rules());
+
+        $style = new Styles();
+        $style->fill($request->only(['userId', 'description', 'style']));
+        $style->save();
+
+        return response()->json($style, 200);
     }
 
     /**
