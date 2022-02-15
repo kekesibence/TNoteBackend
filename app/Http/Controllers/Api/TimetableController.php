@@ -36,7 +36,7 @@ class TimetableController extends Controller
     public function store(Request $request)
     {
         $timetable = new Timetable();
-        $timetable->fill($request->only(['id', 'userId']));
+        $timetable->fill($request->only(['userId', 'name']));
         $timetable->save();
         return response()->json($timetable, 201);
     }
@@ -72,7 +72,7 @@ class TimetableController extends Controller
      */
     public function update(Request $request, Timetable $timetable)
     {
-        $timetable->fill($request->only(['userId']));
+        $timetable->fill($request->only(['userId', 'name']));
         $timetable->save();
         return response()->json($timetable, 200);
     }
