@@ -9,5 +9,5 @@
 <p>Backend server futtatása (/TNoteBackend mappában):</p>
 <ul>
 <li>php artisan serve</li>
-<li>Az Api használatánál ne felejtsük el beallítani az "Accept" és "Content-Type" header-t</li>
+<li>Az Api használatánál ne felejtsük el beallítani az "Accept" és "Content-Type" header-t "application/json"-re</li>
 </ul>
