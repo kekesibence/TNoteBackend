@@ -16,7 +16,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        return Note::all();
+        return response()->json(Note::all(), 200);
     }
 
     /**
@@ -53,7 +53,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        return Note::findOrFail($note->id);
+        return response()->json(Note::findOrFail($note->id), 200);
     }
 
     /**
@@ -96,6 +96,6 @@ class NoteController extends Controller
 
     public function getRelatedNotes(int $id) {
         $notes = Note::get()->where('owner', $id);
-        return $notes;
+        return response()->json($notes, 200);
     }
 }
