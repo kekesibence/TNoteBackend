@@ -10,5 +10,5 @@
 <ul>
     <li>php artisan migrate --seed</li>
     <li>php artisan serve</li>
-    <li>Az Api használatánál ne felejtsük el beallítani az "Accept" és "Content-Type" header-t "application/json"-re</li>
 </ul>
+<p>Az Api használatánál ne felejtsük el beallítani az "Accept" és "Content-Type" header-t "application/json"-re</p>
