@@ -5,7 +5,6 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NoteController;
 use App\Http\Controllers\Api\TTElementsController;
 use App\Http\Controllers\Api\StyleController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +31,3 @@ Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
 Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
 
 Route::get('/users/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
-
-
-
