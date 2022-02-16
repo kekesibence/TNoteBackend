@@ -22,8 +22,6 @@ Route::resource('users', UserController::class);
 
 Route::resource('notes', NoteController::class);
 
-Route::resource('styles', StyleController::class);
-
 Route::resource('timetable', TimetableController::class);
 
 Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
