@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NoteController;
 use App\Http\Controllers\Api\TimetableController;
 use App\Http\Controllers\Api\TTElementsController;
 use App\Http\Controllers\Api\StyleController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,24 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::resource('users', UserController::class);
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::resource('notes', NoteController::class);
 
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::resource('styles', StyleController::class);
 
-Route::group(['middleware' => ['auth:sanctum']], function() {
-    Route::resource('notes', NoteController::class);
+Route::resource('timetables', TimetableController::class);
 
-    Route::resource('styles', StyleController::class);
+Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
 
-    Route::resource('timetables', TimetableController::class);
+Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
 
-    Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
-
-    Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
-
-    Route::get('/users/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
-
-});
-
+Route::get('/users/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
