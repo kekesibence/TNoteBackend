@@ -25,6 +25,7 @@ Route::get('/', function () {
     return view('welcome', [
         'usercount' => $users->count(), 
         'notecount' => $notes->count(),
+        'stylecount' => $styles->count(),
         'timetablecount' => $timetables->count()
     ]);
 });

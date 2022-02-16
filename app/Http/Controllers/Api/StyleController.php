@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StyleRequest;
 use App\Models\Style;
 use Illuminate\Http\Request;
 
@@ -24,9 +25,19 @@ class StyleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StyleRequest $request)
     {
-        //
+        $request->validate($request->rules());
+        
+        $style = new Style();
+        $style->fill($request->only([
+                                'userId',
+                                'description',
+                                'style']));
+        
+        $style->save();
+
+        return response()->json($style, 201);
     }
 
     /**
@@ -37,7 +48,7 @@ class StyleController extends Controller
      */
     public function show(Style $style)
     {
-        //
+        return $style;
     }
 
     /**
@@ -47,9 +58,18 @@ class StyleController extends Controller
      * @param  \App\Models\Style  $style
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Style $style)
+    public function update(StyleRequest $request, Style $style)
     {
-        //
+        $request->validate($request->rules());
+        
+        $style->fill($request->only([
+                                'userId',
+                                'description',
+                                'style']));
+        
+        $style->save();
+
+        return response()->json($style, 200);
     }
 
     /**
@@ -60,6 +80,6 @@ class StyleController extends Controller
      */
     public function destroy(Style $style)
     {
-        //
+        return Style::destroy($style->id);
     }
 }
