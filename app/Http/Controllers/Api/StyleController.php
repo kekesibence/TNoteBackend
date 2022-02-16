@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class StyleController extends Controller
 {
+    //TODO: get user related styles
+
     /**
      * Display a listing of the resource.
      *
