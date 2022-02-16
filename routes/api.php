@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Api\Controllers\TimetableController;
+use App\Http\Controllers\Api\TimetableController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\NoteController;
 use App\Http\Controllers\Api\TTElementsController;
@@ -24,7 +24,7 @@ Route::resource('notes', NoteController::class);
 
 Route::resource('styles', StyleController::class);
 
-Route::resource('timetables', TimetableController::class);
+Route::resource('timetable', TimetableController::class);
 
 Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
 
