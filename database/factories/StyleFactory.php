@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class StylesFactory extends Factory
+class StyleFactory extends Factory
 {
     /**
      * Define the model's default state.

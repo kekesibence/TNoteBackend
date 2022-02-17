@@ -4,27 +4,19 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StyleRequest;
-use App\Models\Styles;
+use App\Models\Style;
 use Illuminate\Http\Request;
 
 class StyleController extends Controller
 {
+    //TODO: get user related styles
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return response()->json(Styles::all(), 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -38,9 +30,13 @@ class StyleController extends Controller
     public function store(StyleRequest $request)
     {
         $request->validate($request->rules());
-
-        $style = new Styles();
-        $style->fill($request->only(['userId', 'description', 'style']));
+        
+        $style = new Style();
+        $style->fill($request->only([
+                                'userId',
+                                'description',
+                                'style']));
+        
         $style->save();
 
         return response()->json($style, 201);
@@ -49,52 +45,43 @@ class StyleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Styles  $styles
-     * @return \Illuminate\Http\Response
-     * int formaban erkezik az id mert ha Styles volt a tipusa nem ment
-     */
-    public function show($styles)
-    {
-        return response()->json(Styles::findOrFail($styles), 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Styles  $styles
+     * @param  \App\Models\Style  $style
      * @return \Illuminate\Http\Response
      */
-    public function edit(Styles $styles)
+    public function show(Style $style)
     {
-        //
+        return $style;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Styles  $styles
+     * @param  \App\Models\Style  $style
      * @return \Illuminate\Http\Response
      */
-    public function update(StyleRequest $request, $stylesId)
+    public function update(StyleRequest $request, Style $style)
     {
         $request->validate($request->rules());
+        
+        $style->fill($request->only([
+                                'userId',
+                                'description',
+                                'style']));
+        
+        $style->save();
 
-        $styles = Styles::findOrFail($stylesId);
-        $styles->fill($request->only(['userId', 'description', 'style']));
-        $styles->save();
-
-        return response()->json($styles, 200);
+        return response()->json($style, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Styles  $styles
+     * @param  \App\Models\Style  $style
      * @return \Illuminate\Http\Response
      */
-    public function destroy($styles)
+    public function destroy(Style $style)
     {
-        return Styles::findOrFail($styles)->delete();
+        return Style::destroy($style->id);
     }
 }
