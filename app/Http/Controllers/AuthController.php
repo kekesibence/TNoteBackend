@@ -19,7 +19,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => $data['password']
         ]);
 
         $token = $user->createToken('user-access')->plainTextToken;
@@ -40,8 +40,6 @@ class AuthController extends Controller
 
         $user = User::where('email', $data['email'])->first();
 
-
-        //TODO: fix hashing check
         if(!$user || Hash::check($user->password, $data['password'])) {
             return [
                 'user' => $user,
