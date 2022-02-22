@@ -26,19 +26,20 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::resource('users', UserController::class);
 
-Route::resource('users', UserController::class);
-
-Route::resource('notes', NoteController::class);
-
-Route::resource('styles', StyleController::class);
-
-Route::resource('timetable', TimetableController::class);
-
-Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
-
-Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
-
-Route::get('/users/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
-
-Route::get('/users/{id}/styles', [StyleController::class, 'getRelated']);
+    Route::resource('notes', NoteController::class);
+    
+    Route::resource('styles', StyleController::class);
+    
+    Route::resource('timetable', TimetableController::class);
+    
+    Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
+    
+    Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
+    
+    Route::get('/users/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
+    
+    Route::get('/users/{id}/styles', [StyleController::class, 'getRelated']);
+});
