@@ -43,8 +43,6 @@ class AuthController extends Controller
         if(!$user || Hash::check($user->password, $data['password'])) {
             return [
                 'user' => $user,
-                'inputpass' => $data['password'],
-                'password' => Hash::check($data['password'] ,$user->password),
                 'message' => 'Wrong credentials'
             ];
         }

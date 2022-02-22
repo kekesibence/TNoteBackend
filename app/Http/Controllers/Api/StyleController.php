@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class StyleController extends Controller
 {
-    //TODO: get user related styles
-
     /**
      * Display a listing of the resource.
      *
@@ -83,5 +81,11 @@ class StyleController extends Controller
     public function destroy(Style $style)
     {
         return Style::destroy($style->id);
+    }
+
+    public function getRelated($id) {
+        $styles = Style::get()->where('userId', $id);
+
+        return $styles;
     }
 }
