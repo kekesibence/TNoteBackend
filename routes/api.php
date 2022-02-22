@@ -34,6 +34,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('styles', StyleController::class);
     
     Route::resource('timetable', TimetableController::class);
+
+    Route::resource('ttelement', TTElementsController::class);
     
     Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
     
