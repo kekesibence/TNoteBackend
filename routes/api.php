@@ -33,7 +33,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     
     Route::resource('styles', StyleController::class);
     
-    Route::resource('timetable', TimetableController::class);
+    Route::resource('timetables', TimetableController::class);
 
     Route::resource('ttelement', TTElementsController::class);
     
@@ -42,6 +42,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
     
     Route::get('/timetables/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
+
+    Route::get('/users/{id}/fulltimetables', [TimetableController::class, 'getFullTimetables']);
     
     Route::get('/users/{id}/styles', [StyleController::class, 'getRelated']);
 });

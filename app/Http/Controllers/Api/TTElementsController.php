@@ -15,7 +15,8 @@ class TTElementsController extends Controller
      */
     public function index()
     {
-        //
+        $ttelements = TTElements::all();
+        return response()->json($ttelements, 200);
     }
 
     /**
@@ -55,7 +56,7 @@ class TTElementsController extends Controller
      * @param  \App\Models\TTElements  $tTElements
      * @return \Illuminate\Http\Response
      */
-    public function show(TTElements $tTElements)
+    public function show(int $tTElements)
     {
         return TTElements::findOrFail($tTElements);
     }

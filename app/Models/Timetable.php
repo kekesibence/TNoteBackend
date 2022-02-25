@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Timetable extends Model
 {
     use HasFactory;
+
+    public function getTTElements() {
+        return $this->hasMany(TTElements::class, 'ttid', 'id');
+    }
 }
