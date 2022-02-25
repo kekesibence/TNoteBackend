@@ -40,7 +40,7 @@ class NoteController extends Controller
         $request->validate($request->rules());
 
         $note = new Note();
-        $note->fill($request->only(['content', 'owner', 'title']));
+        $note->fill($request->only(['content', 'ownerId', 'title']));
         $note->save();
         return response()->json($note, 201);
     }
@@ -78,7 +78,7 @@ class NoteController extends Controller
     {
         $request->validate($request->rules());
 
-        $note->fill($request->only(['title', 'content', 'owner']));
+        $note->fill($request->only(['title', 'content', 'ownerId']));
         $note->save();
         return response()->json($note, 200);
     }
@@ -95,7 +95,7 @@ class NoteController extends Controller
     }
 
     public function getRelatedNotes(int $id) {
-        $notes = Note::get()->where('owner', $id);
+        $notes = Note::get()->where('ownerId', $id);
         return response()->json($notes, 200);
     }
 }
