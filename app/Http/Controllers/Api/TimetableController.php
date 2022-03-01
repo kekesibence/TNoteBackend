@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Timetable;
+use App\Models\TTElements;
 use Illuminate\Http\Request;
 
 class TimetableController extends Controller
@@ -94,5 +95,11 @@ class TimetableController extends Controller
         $timetable = Timetable::get()->where('userId', $id);
         
         return $timetable;
+    }
+
+    public function getFullTimetables(int $id) {
+        $ttids = Timetable::all()->where('userId', $id)->pluck('id');
+        $timeTableElementList = TTElements::all()->whereIn('ttid', $ttids);
+        return response()->json($timeTableElementList, 200);
     }
 }

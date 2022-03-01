@@ -16,7 +16,7 @@ class NoteFactory extends Factory
     {
         return [
             'content' => '',
-            'owner' => User::all()->random(),
+            'ownerId' => User::all()->random(),
             'title' => $this->faker->words(3, true)
         ];
     }
