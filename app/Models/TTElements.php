@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class TTElements extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'ttid',
+        'day',
+        'title',
+        'description',
+        'start',
+        'end',
+        'repeating'
+    ];
 }
