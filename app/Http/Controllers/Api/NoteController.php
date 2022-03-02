@@ -95,9 +95,7 @@ class NoteController extends Controller
     }
 
     public function getRelatedNotes(int $id) {
-        $notes = Note::get()->where('ownerId', $id);
-        return response()->json([
-            'notes' => $notes->values()
-        ], 200);
+        $notes = Note::where('ownerId', $id)->get()->toArray();
+        return response()->json($notes, 200);
     }
 }
