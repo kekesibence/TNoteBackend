@@ -26,7 +26,7 @@ class NoteRequest extends FormRequest
         return [
             'title' => 'required',
             'content' => '',
-            'owner' => 'required'
+            'ownerId' => 'required'
         ];
     }
 }

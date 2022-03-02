@@ -9,12 +9,12 @@ class Timetable extends Model
 {
     use HasFactory;
 
-    public function getTTElements() {
-        return $this->hasMany(TTElements::class, 'ttid', 'id');
-    }
-
     protected $fillable = [
         'userId',
         'name'
     ];
+
+    public function getTTElements() {
+        return $this->hasMany(TTElements::class, 'ttid', 'id');
+    }
 }
