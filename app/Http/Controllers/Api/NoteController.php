@@ -6,6 +6,7 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoteRequest;
+use ArrayObject;
 
 class NoteController extends Controller
 {
@@ -95,7 +96,7 @@ class NoteController extends Controller
     }
 
     public function getRelatedNotes(int $id) {
-        $notes = Note::get()->where('ownerId', $id);
+        $notes = Note::where('ownerId', $id)->get()->toArray();
         return response()->json($notes, 200);
     }
 }

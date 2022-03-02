@@ -106,8 +106,7 @@ class TTElementsController extends Controller
 
     public function getAllElements($tableId) 
     {
-        $elements = TTElements::get()->where('ttid', $tableId);
-
+        $elements = TTElements::where('ttid', $tableId)->get()->toArray();
         return $elements;
     }
 }
