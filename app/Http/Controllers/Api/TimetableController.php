@@ -99,7 +99,7 @@ class TimetableController extends Controller
 
     public function getFullTimetables(int $id) {
         $ttids = Timetable::all()->where('userId', $id)->pluck('id');
-        $timeTableElementList = TTElements::all()->whereIn('ttid', $ttids);
+        $timeTableElementList = TTElements::whereIn('ttid', $ttids)->get()->toArray();
         return response()->json($timeTableElementList, 200);
     }
 }

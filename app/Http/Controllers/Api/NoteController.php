@@ -6,6 +6,7 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoteRequest;
+use ArrayObject;
 
 class NoteController extends Controller
 {

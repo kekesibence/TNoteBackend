@@ -35,12 +35,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     
     Route::resource('timetables', TimetableController::class);
 
-    Route::resource('ttelement', TTElementsController::class);
+    Route::resource('ttelements', TTElementsController::class);
     
     Route::get('/users/{id}/notes', [NoteController::class, 'getRelatedNotes']);
     
     Route::get('/users/{id}/timetables', [TimetableController::class, 'getTimetable']);
-    
+
+    //  id = timeTableId
     Route::get('/timetables/{id}/selectedtimetable', [TTElementsController::class, 'getAllElements']);
 
     Route::get('/users/{id}/fulltimetables', [TimetableController::class, 'getFullTimetables']);

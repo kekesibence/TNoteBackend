@@ -17,4 +17,9 @@ class Timetable extends Model
     public function getTTElements() {
         return $this->hasMany(TTElements::class, 'ttid', 'id');
     }
+
+    protected $fillable = [
+        'userId',
+        'name'
+    ];
 }

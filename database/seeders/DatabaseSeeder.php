@@ -18,6 +18,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->create([
+            "name" => "test",
+            "email" => "example@email.com",
+            "password" => "topsecret"
+        ]);
         User::factory(10)->create();
         Note::factory(50)->create();
         Timetable::factory(10)->create();

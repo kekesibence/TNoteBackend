@@ -79,8 +79,10 @@ class TTElementsController extends Controller
      * @param  \App\Models\TTElements  $tTElements
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TTElements $tTElements)
+    public function update(Request $request, $id)
     {
+        $tTElements = TTElements::findOrFail($id);
+
         $tTElements->fill($request->only([
             'ttid', 
             'day', 
@@ -106,8 +108,7 @@ class TTElementsController extends Controller
 
     public function getAllElements($tableId) 
     {
-        $elements = TTElements::get()->where('ttid', $tableId);
-
+        $elements = TTElements::where('ttid', $tableId)->get()->toArray();
         return $elements;
     }
 }

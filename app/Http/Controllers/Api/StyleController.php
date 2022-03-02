@@ -84,8 +84,7 @@ class StyleController extends Controller
     }
 
     public function getRelated($id) {
-        $styles = Style::get()->where('userId', $id);
-
+        $styles = Style::where('userId', $id)->get()->toArray();
         return $styles;
     }
 }
