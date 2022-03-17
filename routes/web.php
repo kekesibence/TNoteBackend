@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     $users = User::all();
     $notes = Note::all();
     $styles = Style::all();
@@ -29,3 +29,7 @@ Route::get('/', function () {
         'timetablecount' => $timetables->count()
     ]);
 });
+*/
+Route::get('{any}', function () {
+    return view('app');
+})->where('any', '.*');
