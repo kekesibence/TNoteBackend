@@ -12,4 +12,4 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .styles('node_modules/bootstrap/dist/css/bootstrap.css', 'public/css/app.css');
+    .styles('node_modules/bootstrap/dist/css/bootstrap.css', 'public/css/app.css').vue();
